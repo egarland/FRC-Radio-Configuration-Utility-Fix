@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact name="FRC_Team_Kiosk:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FRC_Team_Kiosk_jar</output-path>
+    <root id="root">
+      <element id="archive" name="FRC_Team_Kiosk.jar">
+        <element id="module-output" name="FRC_Team_Kiosk" />
+      </element>
+      <element id="library" level="project" name="logback-core-1.2.8" />
+      <element id="library" level="project" name="logback-classic-1.2.8" />
+      <element id="library" level="project" name="slf4j-api-1.7.2" />
+      <element id="library" level="project" name="sshj-0.11.0" />
+      <element id="library" level="project" name="jdom-2.0.3" />
+      <element id="library" level="project" name="jdom.jdom2" />
+      <element id="library" level="project" name="commons.net" />
+      <element id="library" level="project" name="commons.io" />
+    </root>
+  </artifact>
+</component>

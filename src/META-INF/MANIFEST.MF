@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: frc.teamkiosk.FRC_Team_Kiosk
+Class-Path: logback-core-1.2.8.jar logback-classic-1.2.8.jar slf4j-api-1
+ .7.2.jar sshj-0.11.0.jar jdom-2.0.3.jar jdom2-2.0.6.1.jar commons-net-3
+ .10.0.jar commons-io-2.16.1.jar
+

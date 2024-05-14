@@ -1,0 +1,64 @@
+LOGIN **************************************************************************
+get 192.168.0.50/
+POST to /session.cgi
+    REPORT_METHOD=xml&ACTION=login_plaintext&USER=Admin&PASSWD=&CAPTCHA=
+
+WIRELESS CONFIG ****************************************************************
+get /bsc_wlan.php
+POST /getcfg.php
+    SERVICES=WIFI.PHYINF%2CPHYINF.WIFI%2CRUNTIME.PHYINF%2CRUNTIME.DFS%2CMACCLONE.WLAN-2%2CRUNTIME.SWITCHMODE
+process/ save HTTP/XML response into file?
+POST /hedwig.cgi
+    new wireless settings XML data
+acknowledge response:
+POST /pigwidgeon.cgi
+    ACTIONS=SETCFG%2CSAVE%2CACTIVATE
+acknowlegde response:
+
+QOS CONFIG *********************************************************************
+POST /getcfg.php
+    SERVICES=TRAFFICCTRL.BRIDGE-1%2CRUNTIME.SWITCHMODE
+POST /hedwig/cgi
+    new QOS xml data
+POST /pigwidgeon.cgi
+    ACTIONS=SETCFG%2CSAVE%2CACTIVATE
+
+LAN CONFIG *********************************************************************
+GET /bsc_lan.php
+POST /getcfg.php
+    SERVICES=DEVICE.HOSTNAME%2CINET.BRIDGE-1%2CINET.BRIDGE-2%2CINET.BRIDGE-3%2CRUNTIME.PHYINF%2CRUNTIME.SWITCHMODE
+POST /hedwig.cgi
+    new LAN settings XML data
+ack response
+POST /pigwidgeon.cgi
+    ACTIONS=SETCFG%2CSAVE%2CACTIVATE
+timeout because radio is now at different IP address
+
+RE-LOGIN ***********************************************************************
+get 10.TE.AM.1/
+POST to /session.cgi
+    REPORT_METHOD=xml&ACTION=login_plaintext&USER=Admin&PASSWD=&CAPTCHA=
+
+MAC ADDRESS FILTER
+    SERVICES=MACCTRL%2CWIFI.PHYINF%2CPHYINF.WIFI%2CRUNTIME.PHYINF%2CRUNTIME.SWITCHMODE
+
+ADVANCED WIRELESS
+    SERVICES=WIFI.PHYINF%2CPHYINF.WIFI%2CMULTICAST%2CRUNTIME.SWITCHMODE
+
+GUEST ZONE
+    SERVICES=WIFI.PHYINF%2CPHYINF.WIFI%2CFIREWALL-2%2CRUNTIME.SWITCHMODE
+
+DHCP SERVER
+    SERVICES=DHCPS4.BRIDGE-1%2CRUNTIME.INF.BRIDGE-1%2CRUNTIME.SWITCHMODE
+
+WLAN PARTITION
+    SERVICES=WIFI.PHYINF%2CPHYINF.WIFI%2CRUNTIME.SWITCHMODE
+
+TRAFFIC CONTROL
+    SERVICES=TRAFFICCTRL.BRIDGE-1%2CRUNTIME.SWITCHMODE
+
+WPS
+    SERVICES=WIFI.PHYINF%2CPHYINF.WIFI%2CRUNTIME.SWITCHMODE
+
+USER LIMIT
+    SERVICES=WIFI.PHYINF%2CPHYINF.WIFI%2CRUNTIME.SWITCHMODE

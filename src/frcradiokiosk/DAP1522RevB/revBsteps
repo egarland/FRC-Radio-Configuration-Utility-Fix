@@ -1,0 +1,48 @@
+LOGIN **************************************************************************
+get 192.168.0.50/
+POST to /session.cgi
+    REPORT_METHOD=xml&ACTION=login_plaintext&USER=Admin&PASSWD=&CAPTCHA=
+
+WIRELESS CONFIG ****************************************************************
+get /bsc_wlan.php
+POST /getcfg.php
+    SERVICES=WIFI.PHYINF%2CPHYINF.WIFI%2CRUNTIME.PHYINF%2CRUNTIME.DFS%2CMACCLONE.WLAN-2%2CRUNTIME.SWITCHMODE
+process/ save HTTP/XML response into file?
+POST /hedwig.cgi
+    new wireless settings XML data
+acknowledge response:
+POST /pigwidgeon.cgi
+    ACTIONS=SETCFG%2CSAVE%2CACTIVATE
+acknowlegde response:
+
+LAN CONFIG *********************************************************************
+GET /bsc_lan.php
+POST /getcfg.php
+    SERVICES=DEVICE.HOSTNAME%2CINET.BRIDGE-1%2CINET.BRIDGE-2%2CINET.BRIDGE-3%2CRUNTIME.PHYINF%2CRUNTIME.SWITCHMODE
+POST /hedwig.cgi
+    new LAN settings XML data
+ack response
+POST /pigwidgeon.cgi
+    ACTIONS=SETCFG%2CSAVE%2CACTIVATE
+timeout because radio is now at different IP address
+
+RE-LOGIN ***********************************************************************
+get 10.TE.AM.1/
+POST to /session.cgi
+    REPORT_METHOD=xml&ACTION=login_plaintext&USER=Admin&PASSWD=&CAPTCHA=
+
+CHANGE ADMIN PASSWORD **********************************************************
+GET /tools.php
+POST /getcfg.php
+    SERVICES=DEVICE.ACCOUNT%2CRUNTIME.SWITCHMODE
+process response?
+POST /hedwig.cgi
+    new admin settings XML data
+ack response
+POST /pigwidgeon.php
+    ACTIONS=SETCFG%2CSAVE%2CACTIVATE
+ack response
+
+RESET **************************************************************************
+POST /service.cgi
+    EVENT=FRESET
